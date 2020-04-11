@@ -15,15 +15,15 @@ function Table(props) {
                                 <th scope="col">State/UT</th>
                                 <th scope="col">
                                     <div className="d-none d-md-block">Active</div>
-                                    <div className="d-sm-none">A</div>
+                                    <div className="d-sm-none activecase">A</div>
                                 </th>
                                 <th scope="col">
                                     <div className="d-none d-md-block">Recovered</div>
-                                    <div className="d-sm-none">R</div> 
+                                    <div className="d-sm-none recovered">R</div> 
                                 </th>
                                 <th scope="col">
                                     <div className="d-none d-md-block">Deaths</div>
-                                    <div className="d-sm-none">D</div> 
+                                    <div className="d-sm-none deaths">D</div> 
                                 </th>
                                 <th scope="col">
                                     <div className="d-none d-md-block">Total</div>
