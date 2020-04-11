@@ -9,7 +9,7 @@ function Table(props) {
             </div>
             <div className="col-lg-4">
                 <div className="table-responsive">
-                    <table className="table">
+                    <table className="table statTable">
                         <thead>
                             <tr>
                                 <th scope="col">State/UT</th>
