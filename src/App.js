@@ -25,6 +25,7 @@ function App() {
 
   function getAllStatesData() {
     axios.get("https://api.covid19india.org/data.json").then(res => {
+      
       let stateWiseData = res.data.statewise;
 
       setTotalCountDetails(stateWiseData[0]);
@@ -32,7 +33,10 @@ function App() {
 
       stateWiseData.shift();
 
-      stateWiseData = stateWiseData.filter(stateData=> stateData.confirmed > 0);
+      stateWiseData = stateWiseData.filter(stateData=> stateData.confirmed > 0)
+                                  .sort(function (a, b) {
+                                      return b.confirmed - a.confirmed
+                                  });
 
       setAllStatesData(stateWiseData);
 

@@ -83,7 +83,9 @@ function Table(props) {
                                                             props.allDistrictsData.map((stateDetails) => { 
                                                                 if (stateDetails.state.toUpperCase() === statewise.state.toUpperCase()) {
                                                                     return (
-                                                                        stateDetails.districtData.map((districtDetails, key) =>  
+                                                                        stateDetails.districtData.sort(function (a, b) {
+                                                                            return b.confirmed - a.confirmed
+                                                                        }).map((districtDetails, key) =>  
                                                                         <tr key={key}>
                                                                             <td>{districtDetails.district}</td>
                                                                             <td>
