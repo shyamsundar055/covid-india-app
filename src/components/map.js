@@ -98,11 +98,11 @@ function Map(props) {
                                             <td style={{ backgroundColor: "red",width: "5%" }}></td>
                                         </tr>
                                         <tr>
-                                            <td style={{ width: "10%" }}>0-49</td>
-                                            <td style={{ width: "10%" }}>50-99</td>
-                                            <td style={{ width: "10%" }}>100-499</td>
-                                            <td style={{ width: "10%" }}>500-999</td>
-                                            <td style={{ width: "10%" }}>>=1000</td>
+                                            <td style={{ width: "20%" }}>0-49</td>
+                                            <td style={{ width: "20%" }}>50-99</td>
+                                            <td style={{ width: "20%" }}>100-499</td>
+                                            <td style={{ width: "20%" }}>500-999</td>
+                                            <td style={{ width: "20%" }}>>=1000</td>
                                         </tr>
 
                                     </tbody>

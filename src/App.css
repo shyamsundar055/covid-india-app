@@ -40,9 +40,9 @@ body{
   padding-right: 5px; 
 }
 .rangeTable{
-  width:50%;
+  width:100%;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 400;
   border-collapse:separate; 
 }
 .rangeTable td{
@@ -52,8 +52,13 @@ body{
 .newCasesTable{
   font-size: 12px;
   font-weight: 500;
+  display: inline-block;
 }
 
 .stateRow {
   background-color: rgba(0,0,0,.05);
+}
+
+table tbody td{
+  font-size:.9rem;
 }

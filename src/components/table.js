@@ -4,19 +4,31 @@ function Table(props) {
  
     return (
         <>
-            <div className="col-lg-1">
+            <div className="col-lg-2">
                     &nbsp;
             </div>
-            <div className="col-lg-5">
+            <div className="col-lg-4">
                 <div className="table-responsive">
                     <table className="table">
                         <thead>
                             <tr>
                                 <th scope="col">State/UT</th>
-                                <th scope="col">Active</th>
-                                <th scope="col">Recovered</th>
-                                <th scope="col">Deaths</th>
-                                <th scope="col">Total</th>
+                                <th scope="col">
+                                    <div className="d-none d-md-block">Active</div>
+                                    <div className="d-sm-none">A</div>
+                                </th>
+                                <th scope="col">
+                                    <div className="d-none d-md-block">Recovered</div>
+                                    <div className="d-sm-none">R</div> 
+                                </th>
+                                <th scope="col">
+                                    <div className="d-none d-md-block">Deaths</div>
+                                    <div className="d-sm-none">D</div> 
+                                </th>
+                                <th scope="col">
+                                    <div className="d-none d-md-block">Total</div>
+                                    <div className="d-sm-none">T</div> 
+                                </th>
                             </tr>
                         </thead>
                         <tbody className="stateBody">
@@ -24,9 +36,11 @@ function Table(props) {
                                 props.allStatesData.length ?
                                     props.allStatesData.map((statewise, index) => 
                                         <React.Fragment key={index}>
-                                            <tr key={index} className={ index % 2 === 0 ? "stateRow": ""}>
+                                            <tr key={index} className={ index % 2 === 0 ? "stateRow": ""} style={{cursor:"pointer"}} data-toggle="collapse" data-target={"#districts" + index}>
                                                 <td>
-                                                    <i className="fa fa-chevron-circle-down" aria-hidden="true" data-toggle="collapse" data-target={"#districts" + index} style={{color:"#717171"}}></i>
+                                                    <span style={{color:"#717171",fontSize:"0.80em",cursor:"pointer",position:"absolute",left:"0.20rem"}}>
+                                                        <i className="fa fa-chevron-circle-down" aria-hidden="true"></i>
+                                                    </span>
                                                     &nbsp;{statewise.state}
                                                 </td>
                                                 <td>{statewise.active}</td>
@@ -34,7 +48,7 @@ function Table(props) {
                                                     {statewise.recovered}
                                                     {
                                                         statewise.deltarecovered > 0 ?
-                                                            <span className="newCasesTable recovered">&nbsp;&nbsp;<i className="fa fa-arrow-up" aria-hidden="true"></i> {statewise.deltarecovered}</span>
+                                                            <span className="newCasesTable recovered">&nbsp;&nbsp;<i className="fa fa-arrow-up" aria-hidden="true">{statewise.deltarecovered}</i> </span>
                                                             : ""
                                                     }
                                                 </td>
@@ -42,7 +56,7 @@ function Table(props) {
                                                     {statewise.deaths}
                                                     {
                                                         statewise.deltadeaths > 0 ?
-                                                            <span className="newCasesTable deaths">&nbsp;&nbsp;<i className="fa fa-arrow-up" aria-hidden="true"></i> {statewise.deltadeaths}</span>
+                                                            <span className="newCasesTable deaths">&nbsp;&nbsp;<i className="fa fa-arrow-up" aria-hidden="true">{statewise.deltadeaths}</i> </span>
                                                             : ""
                                                     }
                                                 </td>
@@ -50,7 +64,7 @@ function Table(props) {
                                                     {statewise.confirmed}
                                                     {
                                                         statewise.deltaconfirmed > 0 ?
-                                                            <span className=" newCasesTable deaths">&nbsp;&nbsp;<i className="fa fa-arrow-up" aria-hidden="true"></i> {statewise.deltaconfirmed}</span>
+                                                            <span className=" newCasesTable deaths">&nbsp;&nbsp;<i className="fa fa-arrow-up" aria-hidden="true">{statewise.deltaconfirmed}</i></span>
                                                             : ""
                                                     }
                                                 </td>
