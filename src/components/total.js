@@ -1,7 +1,6 @@
 import React from 'react'
 
-function Total(props) {
-    //console.log("refresh");
+function Total(props) { 
     return (
         <>
             <div className="container-fluid">

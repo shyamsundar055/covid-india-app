@@ -5,10 +5,10 @@ import geoDataIndia from '../maps/india';
 
 function Map(props) {
     const d3Container = useRef(null);
-    const d3Tooltip = useRef(null);
 
     useEffect(() => {
-        if (props.allStatesData && d3Container.current && d3Tooltip.current) {
+        
+        if (props.allStatesData && d3Container.current) {
 
             let allStates = JSON.parse(JSON.stringify(props.allStatesData));
 
@@ -20,18 +20,15 @@ function Map(props) {
 
             const projection = d3.geoMercator()
                 .center([10, 0])
-                //.scale([800/(2*Math.PI)]) 
                 .scale([750])
-                .translate([-600, 550])
+                .translate([-600, 550]);
 
 
-            const tooltip = d3.select(d3Tooltip.current);
-            const path = d3.geoPath().projection(projection)
-
+            const path = d3.geoPath().projection(projection);
 
             const g = svg.append("g")
                 .attr("width", "100%")
-                .attr("viewBox", `0 0 ${width} ${height}`)
+                .attr("viewBox", `0 0 ${width} ${height}`);
 
             g.selectAll("path")
                 .data(topojson.feature(geoDataIndia, geoDataIndia.objects["india"]).features)
@@ -51,8 +48,7 @@ function Map(props) {
                         return "#71e3e8";
                     else
                         return "#7cdc7c";
-                }
-                )
+                })
                 .attr("stroke", "#B4B1B1")
                 .attr("stroke-width", "1px")
                 .on("mouseover", function (d, i) {
@@ -60,7 +56,6 @@ function Map(props) {
                 })
                 .on("mouseout", function (d, i) {
                     d3.select(this).attr("stroke-width", "1px").attr("stroke", "#B4B1B1");
-                    tooltip.style("visibility", "hidden");
                 })
                 .append("title")
                 .text(function (d) {
@@ -69,8 +64,7 @@ function Map(props) {
                     let state = stateDetails ? stateDetails.state : "";
                     return `${state} : ${active}`
 
-                }
-                )
+                });
 
         }
 
@@ -81,13 +75,10 @@ function Map(props) {
             <div className="row">
                 <div className="col-lg-12 fadeIn" style={{ animationDelay: "2.0s" }}>
                     <div className="">
-                        <div className="tooltip visualization-tooltip" style={{ width: "187px", height: "172px", visibility: "hidden" }} ref={d3Tooltip}>
-                        </div>
                         <svg ref={d3Container}>
                         </svg>
                         <div style={{ fontSize: "14px" }}>Active cases</div>
                         <div className="d-flex justify-content-center">
-
                             <table className="rangeTable">
                                 <tbody>
                                     <tr>
@@ -104,7 +95,6 @@ function Map(props) {
                                         <td style={{ width: "20%" }}>500-999</td>
                                         <td style={{ width: "20%" }}>>=1000</td>
                                     </tr>
-
                                 </tbody>
                             </table>
                         </div>

@@ -3,6 +3,7 @@ body{
   background-image: url("back.png");
 } 
 
+/* Total Component*/
 .total{
   display: flex;
   flex-direction :column; 
@@ -39,6 +40,8 @@ body{
   padding-left: 5px;
   padding-right: 5px; 
 }
+
+/* Map Component */
 .rangeTable{
   width:100%;
   font-size: 12px;
@@ -49,6 +52,7 @@ body{
   padding: 0.35em;
 }
 
+/* Table Component*/
 .newCasesTable{
   font-size: 12px;
   font-weight: 500;
@@ -72,6 +76,7 @@ table tbody td{
   background-color: white;
 }
 
+/* Animations*/
 .fadeIn {
   animation-name: fadeInUp;
   animation-duration: 0.45s;
