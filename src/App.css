@@ -59,10 +59,33 @@ body{
   background-color: rgba(0,0,0,.05);
 }
 
+.districtRow .districtCell{
+  padding: 0px;
+  border: 0px;
+}
+
 table tbody td{
   font-size:.9rem;
 }
 
-.statTable{
+.stateTable{
   background-color: white;
+}
+
+.fadeIn {
+  animation-name: fadeInUp;
+  animation-duration: 0.45s;
+  animation-fill-mode: both;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

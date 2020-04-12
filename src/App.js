@@ -11,7 +11,7 @@ import Footer from './components/footer'
 
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
+  //const [isLoading, setIsLoading] = useState(true);
   const [allStatesData, setAllStatesData] = useState([]);
   const [allDistrictsData, setAllDistrictsData] = useState([]);
   const [totalCountDetails, setTotalCountDetails] = useState({});
@@ -25,7 +25,7 @@ function App() {
 
   function getAllStatesData() {
     axios.get("https://api.covid19india.org/data.json").then(res => {
-      
+
       let stateWiseData = res.data.statewise;
 
       setTotalCountDetails(stateWiseData[0]);
@@ -33,10 +33,10 @@ function App() {
 
       stateWiseData.shift();
 
-      stateWiseData = stateWiseData.filter(stateData=> stateData.confirmed > 0)
-                                  .sort(function (a, b) {
-                                      return b.confirmed - a.confirmed
-                                  });
+      stateWiseData = stateWiseData.filter(stateData => stateData.confirmed > 0)
+        .sort(function (a, b) {
+          return b.confirmed - a.confirmed
+        });
 
       setAllStatesData(stateWiseData);
 
@@ -53,10 +53,15 @@ function App() {
     });
   }
 
+  const refreshData = () => {
+    getAllStatesData();
+    getAllDistrictsData();
+  }
+
   return (
     <>
       <Header />
-      <Total overAllState={totalCountDetails} />
+      <Total overAllState={totalCountDetails} lastUpdated={lastUpdated} refreshData={refreshData} />
       <div className="container-fluid">
         <div className="row">
           <Table allStatesData={allStatesData} allDistrictsData={allDistrictsData} lastUpdated={lastUpdated} />

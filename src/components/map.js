@@ -54,7 +54,7 @@ function Map(props) {
                 }
                 )
                 .attr("stroke", "#B4B1B1")
-                .attr("stroke-width", "1px") 
+                .attr("stroke-width", "1px")
                 .on("mouseover", function (d, i) {
                     d3.select(this).attr("stroke-width", "2px").attr("stroke", "red");
                 })
@@ -63,14 +63,14 @@ function Map(props) {
                     tooltip.style("visibility", "hidden");
                 })
                 .append("title")
-                    .text(function (d) {
-                            let stateDetails = allStates.find(stateDetail => stateDetail.state.toUpperCase() === d.properties.st_nm.toUpperCase())
-                            let active = stateDetails ? stateDetails.active : 0;
-                            let state = stateDetails ? stateDetails.state : "";
-                            return `${state} : ${active}`
+                .text(function (d) {
+                    let stateDetails = allStates.find(stateDetail => stateDetail.state.toUpperCase() === d.properties.st_nm.toUpperCase())
+                    let active = stateDetails ? stateDetails.active : 0;
+                    let state = stateDetails ? stateDetails.state : "";
+                    return `${state} : ${active}`
 
-                        }
-                    )
+                }
+                )
 
         }
 
@@ -79,37 +79,37 @@ function Map(props) {
     return (
         <div className="col-lg-6 text-center">
             <div className="row">
-                <div className="col-lg-12">
-                    <div className=""> 
-                            <div className="tooltip visualization-tooltip" style={{ width: "187px", height: "172px", visibility: "hidden" }} ref={d3Tooltip}>
-                            </div>
-                            <svg ref={d3Container}>
-                            </svg> 
-                            <div style={{fontSize:"14px"}}>Active cases</div>
-                            <div className="d-flex justify-content-center">
-                                
-                                <table className="rangeTable">
-                                    <tbody>
-                                        <tr>
-                                            <td style={{ backgroundColor: "#7cdc7c",width: "5%" }}></td> 
-                                            <td style={{ backgroundColor: "#71e3e8",width: "5%" }}></td> 
-                                            <td style={{ backgroundColor: "rgb(255, 232, 121)",width: "5%" }}></td> 
-                                            <td style={{ backgroundColor: "#D65F59",width: "5%" }}></td> 
-                                            <td style={{ backgroundColor: "red",width: "5%" }}></td>
-                                        </tr>
-                                        <tr>
-                                            <td style={{ width: "20%" }}>0-49</td>
-                                            <td style={{ width: "20%" }}>50-99</td>
-                                            <td style={{ width: "20%" }}>100-499</td>
-                                            <td style={{ width: "20%" }}>500-999</td>
-                                            <td style={{ width: "20%" }}>>=1000</td>
-                                        </tr>
+                <div className="col-lg-12 fadeIn" style={{ animationDelay: "2.0s" }}>
+                    <div className="">
+                        <div className="tooltip visualization-tooltip" style={{ width: "187px", height: "172px", visibility: "hidden" }} ref={d3Tooltip}>
+                        </div>
+                        <svg ref={d3Container}>
+                        </svg>
+                        <div style={{ fontSize: "14px" }}>Active cases</div>
+                        <div className="d-flex justify-content-center">
 
-                                    </tbody>
-                                </table>
-                            </div> 
+                            <table className="rangeTable">
+                                <tbody>
+                                    <tr>
+                                        <td style={{ backgroundColor: "#7cdc7c", width: "5%" }}></td>
+                                        <td style={{ backgroundColor: "#71e3e8", width: "5%" }}></td>
+                                        <td style={{ backgroundColor: "rgb(255, 232, 121)", width: "5%" }}></td>
+                                        <td style={{ backgroundColor: "#D65F59", width: "5%" }}></td>
+                                        <td style={{ backgroundColor: "red", width: "5%" }}></td>
+                                    </tr>
+                                    <tr>
+                                        <td style={{ width: "20%" }}>0-49</td>
+                                        <td style={{ width: "20%" }}>50-99</td>
+                                        <td style={{ width: "20%" }}>100-499</td>
+                                        <td style={{ width: "20%" }}>500-999</td>
+                                        <td style={{ width: "20%" }}>>=1000</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                </div> 
+                </div>
             </div>
         </div>
     )

@@ -5,7 +5,7 @@ function Footer() {
     return (
         <div className="container-fluid">
             <div className="row">
-                <div className="col-md-12 text-center">
+                <div className="col-md-12 text-center fadeIn" style={{ animationDelay: "2.2s" }}>
                     <footer className="text-center text-muted font-weight-light">
                         <span style={{ fontSize: "12px" }} >
                             Data provider <a href="https://api.covid19india.org/" target="_blank" rel="noopener noreferrer">COVID19-India API</a>&nbsp;&nbsp;|&nbsp;

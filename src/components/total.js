@@ -1,14 +1,22 @@
 import React from 'react'
 
 function Total(props) {
-
+    //console.log("refresh");
     return (
         <>
             <div className="container-fluid">
                 <div className="row">
+                    <div className="col-lg-12 d-flex justify-content-center fadeIn" style={{ animationDelay: "1.2s" }}>
+                        <p className="text-muted">Last updated : {props.lastUpdated}
+                            {/* &nbsp;&nbsp;
+                            <i className="fa fa-refresh" aria-hidden="true" style={{cursor:"pointer"}} onClick={props.refreshData}></i> */}
+                        </p>
+                    </div>
+                </div>
+                <div className="row">
                     <div className="col-lg-12 d-flex justify-content-center">
                         <div className="row">
-                            <div className="col-lg-3">
+                            <div className="col-lg-3 fadeIn" style={{ animationDelay: "1.3s" }}>
                                 <div className="total alert alert-info">
                                     <span className="totalHead">Total</span>
                                     <span className="totalCount">
@@ -21,7 +29,7 @@ function Total(props) {
                                     </span>
                                 </div>
                             </div>
-                            <div className="col-lg-3">
+                            <div className="col-lg-3 fadeIn" style={{ animationDelay: "1.4s" }}>
                                 <div className="total alert alert-warning">
                                     <span className="totalHead">Active</span>
                                     <span className="totalCount activecase">
@@ -29,7 +37,7 @@ function Total(props) {
                                     </span>
                                 </div>
                             </div>
-                            <div className="col-lg-3">
+                            <div className="col-lg-3 fadeIn" style={{ animationDelay: "1.5s" }}>
                                 <div className="total alert alert-success">
                                     <span className="totalHead">Recovered</span>
                                     <span className="totalCount recovered">
@@ -42,7 +50,7 @@ function Total(props) {
                                     </span>
                                 </div>
                             </div>
-                            <div className="col-lg-3">
+                            <div className="col-lg-3 fadeIn" style={{ animationDelay: "1.6s" }}>
                                 <div className="total  alert alert-danger">
                                     <span className="totalHead">Deaths</span>
                                     <span className="totalCount deaths">
@@ -59,7 +67,6 @@ function Total(props) {
                     </div>
                 </div>
             </div>
-            <br />
             <br />
         </>
     )
