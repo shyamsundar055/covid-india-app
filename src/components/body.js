@@ -13,6 +13,7 @@ function Body() {
     const [allDistrictsData, setAllDistrictsData] = useState([]);
     const [totalCountDetails, setTotalCountDetails] = useState({});
     const [lastUpdated, setLastUpdated] = useState("");
+    const [maxActiveCases, setmaxActiveCases] = useState(0);
 
     useEffect(() => {
         getAllStatesData();
@@ -35,6 +36,12 @@ function Body() {
                 });
 
             setAllStatesData(stateWiseData);
+
+            stateWiseData = stateWiseData.sort(function (a, b) {
+                return b.active - a.active
+            });
+
+            setmaxActiveCases(stateWiseData[0].active);
 
         }).catch(err => {
             console.log(err);
@@ -60,7 +67,7 @@ function Body() {
             <div className="container-fluid">
                 <div className="row">
                     <StateTable allStatesData={allStatesData} allDistrictsData={allDistrictsData} lastUpdated={lastUpdated} />
-                    <Map allStatesData={allStatesData} />
+                    <Map allStatesData={allStatesData} maxActiveCases={maxActiveCases} />
                 </div>
             </div>
         </>

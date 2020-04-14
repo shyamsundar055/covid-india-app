@@ -47,7 +47,7 @@ function StateRow(props){
                             {statewise.confirmed}
                             {
                                 statewise.deltaconfirmed > 0 ?
-                                    <span className=" newCasesTable deaths">
+                                    <span className=" newCasesTable activecase">
                                         &nbsp;&nbsp;<i className="fa fa-arrow-up" aria-hidden="true">{statewise.deltaconfirmed}</i>
                                     </span>
                                     : ""

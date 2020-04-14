@@ -4,11 +4,12 @@ import * as topojson from 'topojson-client';
 import geoDataIndia from '../maps/india';
 
 function Map(props) {
-    const d3Container = useRef(null);
+    const d3Container = useRef(null); 
+    const rangeSplit = props.maxActiveCases/5;
 
     useEffect(() => {
         
-        if (props.allStatesData && d3Container.current) {
+        if (props.allStatesData && props.maxActiveCases && d3Container.current) {
 
             let allStates = JSON.parse(JSON.stringify(props.allStatesData));
 
@@ -38,13 +39,13 @@ function Map(props) {
                     let stateDetails = allStates.find(stateDetail => stateDetail.state.toUpperCase() === d.properties.st_nm.toUpperCase())
                     let range = stateDetails ? stateDetails.active : 0;
 
-                    if (range > 1000)
+                    if (range >= ((rangeSplit*4)+1))
                         return "red";
-                    else if (range >= 500 && range <= 999)
+                    else if (range >= ((rangeSplit*3)+1) && range <= (rangeSplit*4))
                         return "#D65F59";
-                    else if (range >= 100 && range <= 499)
+                    else if (range >= ((rangeSplit*2)+1) && range <= (rangeSplit*3))
                         return "rgb(255, 232, 121)";
-                    else if (range >= 50 && range <= 99)
+                    else if (range >= (rangeSplit+1) && range <= (rangeSplit*2))
                         return "#71e3e8";
                     else
                         return "#7cdc7c";
@@ -68,7 +69,7 @@ function Map(props) {
 
         }
 
-    }, [props.allStatesData])
+    }, [props.allStatesData,props.maxActiveCases,rangeSplit])
 
     return (
         <div className="col-lg-6 text-center">
@@ -88,12 +89,12 @@ function Map(props) {
                                         <td style={{ backgroundColor: "#D65F59", width: "5%" }}></td>
                                         <td style={{ backgroundColor: "red", width: "5%" }}></td>
                                     </tr>
-                                    <tr>
-                                        <td style={{ width: "20%" }}>0-49</td>
-                                        <td style={{ width: "20%" }}>50-99</td>
-                                        <td style={{ width: "20%" }}>100-499</td>
-                                        <td style={{ width: "20%" }}>500-999</td>
-                                        <td style={{ width: "20%" }}>>=1000</td>
+                                    <tr className="rangeValueRow">
+                                        <td style={{ width: "20%" }}>0-{rangeSplit}</td>
+                                        <td style={{ width: "20%" }}>{rangeSplit+1}-{(rangeSplit*2)}</td>
+                                        <td style={{ width: "20%" }}>{(rangeSplit*2)+1}-{(rangeSplit*3)}</td>
+                                        <td style={{ width: "20%" }}>{(rangeSplit*3)+1}-{(rangeSplit*4)}</td>
+                                        <td style={{ width: "20%" }}>>={(rangeSplit*4)+1}</td>
                                     </tr>
                                 </tbody>
                             </table>
