@@ -5,7 +5,7 @@ import geoDataIndia from '../maps/india';
 
 function Map(props) {
     const d3Container = useRef(null); 
-    const rangeSplit = props.maxActiveCases/5;
+    const rangeSplit = parseInt(props.maxActiveCases/5);
 
     useEffect(() => {
         
